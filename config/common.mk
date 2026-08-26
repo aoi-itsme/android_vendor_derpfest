@@ -146,6 +146,13 @@ endif
 PRODUCT_PACKAGES += \
     framework_compatibility_matrix.lineage.xml
 
+# Lineage packages
+ifeq ($(PRODUCT_IS_ATV),)
+PRODUCT_PACKAGES += \
+    ExactCalculator \
+    Jelly
+endif
+
 ifeq ($(PRODUCT_IS_AUTOMOTIVE),)
 PRODUCT_PACKAGES += \
     DerpFest-Parts
@@ -269,6 +276,11 @@ ifneq ($(TARGET_BUILD_VARIANT),eng)
 PRODUCT_PRODUCT_PROPERTIES += \
     debug.sf.enable_transaction_tracing=false
 endif
+
+# SetupWizard
+PRODUCT_PRODUCT_PROPERTIES += \
+    setupwizard.theme=glif_v4 \
+    setupwizard.feature.day_night_mode_enabled=true
 
 PRODUCT_ENFORCE_RRO_EXCLUDED_OVERLAYS += vendor/lineage/overlay/no-rro
 PRODUCT_PACKAGE_OVERLAYS += \

@@ -94,10 +94,6 @@ endif
 # Don't dexpreopt prebuilts. (For GMS).
 DONT_DEXPREOPT_PREBUILTS := true
 
-# Include GMS by default
-WITH_GMS := true
-$(call inherit-product, vendor/gms/products/gms.mk)
-
 # Signing
 ifneq (eng,$(TARGET_BUILD_VARIANT))
 ifneq (,$(wildcard vendor/lineage/signing/keys/releasekey.pk8))
