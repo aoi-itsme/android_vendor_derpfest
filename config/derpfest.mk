@@ -91,8 +91,13 @@ else
         SettingsGoogleFutureFaceEnroll
 endif
 
-# Don't dexpreopt prebuilts. (For GMS).
-DONT_DEXPREOPT_PREBUILTS := true
+# Disable GMS by default
+WITH_GMS := false
+ifeq ($(WITH_GMS),true)
+    $(call inherit-product, vendor/gms/products/gms.mk)
+    # Don't dexpreopt prebuilts. (For GMS).
+    DONT_DEXPREOPT_PREBUILTS := true
+endif
 
 # Signing
 ifneq (eng,$(TARGET_BUILD_VARIANT))
